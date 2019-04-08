@@ -1,4 +1,4 @@
-package twitter;
+package twitter.incubating;
 
 import java.util.List;
 import twitter4j.Query;

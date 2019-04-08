@@ -1,4 +1,4 @@
-package twitter;
+package twitter.incubating;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -57,7 +57,7 @@ public class UpdateStatus {
             } catch (IllegalStateException ie) {
                 // access token is already available, or consumer key/secret is not set.
                 if (!twitter.getAuthorization().isEnabled()) {
-                    System.out.println("OAuth consumer key/secret is not set.");
+                    System.out.println("DefaultAuth consumer key/secret is not set.");
                     System.exit(-1);
                 }
             }
