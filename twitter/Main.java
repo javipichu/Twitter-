@@ -24,7 +24,6 @@ public class Main {
             session = new Session();
         }
 
-
         String[] options = {"Timeline", "Tweet", "Exit"};
         while (true) {
             for (int i = 0; i < options.length; i++) {

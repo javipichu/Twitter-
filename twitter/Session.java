@@ -54,6 +54,14 @@ public class Session {
                 .setOAuthAccessToken(token.getToken())
                 .setOAuthAccessTokenSecret(token.getSecretToken());
         twitter = new TwitterFactory(configBuilder.build()).getInstance();
+
+
+        try {
+            System.out.println("Welcome @" + twitter.showUser(twitter.getScreenName()).getScreenName());
+
+        } catch (TwitterException e) {
+            e.printStackTrace();
+        }
     }
 
     public Twitter getTwitter() {
@@ -63,14 +71,14 @@ public class Session {
     public void printTimeline() {
         Paging pagina = new Paging();
         pagina.setCount(50);
-        ResponseList listado = null;
+        ResponseList<Status> listado = null;
         try {
             listado = twitter.getHomeTimeline(pagina);
         } catch (TwitterException e) {
             e.printStackTrace();
         }
         for (int i = 0; i < listado.size(); i++) {
-            System.out.println(listado.get(i).toString());
+            System.out.printf("%30s | %15s | %100s %n", listado.get(i).getCreatedAt().toString(), ("@" + listado.get(i).getUser().getScreenName()), listado.get(i).getText());
         }
     }
 
