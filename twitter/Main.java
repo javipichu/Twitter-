@@ -6,28 +6,27 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Session session = null;
         boolean persist = false;
-        if(PersistAccessToken.file.exists()){
+        if (PersistAccessToken.file.exists()) {
             System.out.println("Session file found, sign in? (Y/N) : ");
             Boolean answer = null;
-            do{
+            do {
                 answer = consoleAssert();
-            }while(answer == null);
-            if(answer){
+            } while (answer == null);
+            if (answer) {
                 persist = true;
                 session = new Session(true);
             }
         }
-        if(!persist){
+        if (!persist) {
             session = new Session();
         }
 
 
-
         String[] options = {"Timeline", "Tweet", "Exit"};
-        while(true) {
+        while (true) {
             for (int i = 0; i < options.length; i++) {
                 System.out.println(i + 1 + ". " + options[i]);
             }
@@ -40,23 +39,23 @@ public class Main {
                 n = Integer.parseInt(opt);
             } while (n < 1 || n > options.length);
 
-            switch(n){
+            switch (n) {
                 case 1:
                     session.printTimeline();
                     break;
                 case 2:
                     System.out.println("Enter Tweet: \n");
                     String tweet = new Scanner(System.in).nextLine();
-                    tweet = tweet.substring(0, Math.min(139,tweet.length()));
+                    tweet = tweet.substring(0, Math.min(139, tweet.length()));
                     session.updateStatus(tweet);
                     break;
                 case 3:
                     System.out.println("Save session? (Y/N) : ");
                     Boolean answer = null;
-                    do{
+                    do {
                         answer = consoleAssert();
-                    }while(answer == null);
-                    if(answer)
+                    } while (answer == null);
+                    if (answer)
                         session.saveSession();
                     else
                         session.clearSession();
@@ -80,6 +79,7 @@ public class Main {
             return false;
         }
     }
+
     public static Boolean consoleAssert() {
         switch ((int) scanChar()) {
             case 121: // 'y'
@@ -91,6 +91,7 @@ public class Main {
         }
         return null;
     }
+
     public static char scanChar() {
         return new Scanner(System.in).next().charAt(0);
     }

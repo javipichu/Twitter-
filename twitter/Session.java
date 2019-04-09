@@ -14,7 +14,7 @@ public class Session {
     PersistAccessToken token;
 
 
-    public Session(){
+    public Session() {
         this(false);
     }
 
@@ -31,9 +31,9 @@ public class Session {
         }
 
         token = new PersistAccessToken();
-        if(!persist)
+        if (!persist)
             token.removeKey();
-        try{
+        try {
             token.readKey();
             System.out.println("Token read from file.");
         } catch (IOException e) {
@@ -60,7 +60,7 @@ public class Session {
         return twitter;
     }
 
-    public void printTimeline(){
+    public void printTimeline() {
         Paging pagina = new Paging();
         pagina.setCount(50);
         ResponseList listado = null;
@@ -74,7 +74,7 @@ public class Session {
         }
     }
 
-    public void updateStatus(String string){
+    public void updateStatus(String string) {
         try {
             twitter.updateStatus(string);
         } catch (TwitterException e) {
@@ -82,11 +82,11 @@ public class Session {
         }
     }
 
-    public void saveSession(){
+    public void saveSession() {
         token.saveKey();
     }
 
-    public void clearSession(){
+    public void clearSession() {
         token.removeKey();
     }
 

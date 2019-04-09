@@ -11,7 +11,7 @@ public class PersistConsumerKey implements Persistable, Serializable {
 
     File file = new File("consumer.dat");
     //File file = new File(System.getProperty("user.home")+"/consumer.txt".replace("\\","/"));
-    
+
 
     public PersistConsumerKey() {
     }
@@ -58,7 +58,7 @@ public class PersistConsumerKey implements Persistable, Serializable {
         this.apikey = scan.nextLine();
         this.apisecret = scan.nextLine();
         System.out.println("Read consumer OK");
-            System.out.println(file.getAbsolutePath());
+        System.out.println(file.getAbsolutePath());
     }
 
     @Override

@@ -12,11 +12,9 @@ import java.util.Scanner;
 
 public class PersistAccessToken implements Persistable, Serializable {
 
+    public static final File file = new File("token.dat");
     String token;
     String secretToken;
-
-
-    public static final File file = new File("token.dat");
     //public static final File file = new File(System.getProperty("user.home")+"/consumer.txt".replace("\\","/"));
 
     public PersistAccessToken() {
@@ -27,7 +25,7 @@ public class PersistAccessToken implements Persistable, Serializable {
         this.secretToken = secretTk;
     }
 
-    public void setDefault(){
+    public void setDefault() {
         token = "**************************************************";
         secretToken = "*********************************************";
     }
@@ -47,6 +45,7 @@ public class PersistAccessToken implements Persistable, Serializable {
     public void setSecretToken(String secretToken) {
         this.secretToken = secretToken;
     }
+
     public void saveKey() {
         try (PrintWriter pw = new PrintWriter(file)) {
             pw.println(token);
@@ -65,7 +64,7 @@ public class PersistAccessToken implements Persistable, Serializable {
         System.out.println("Read token OK");
     }
 
-    public void removeKey(){
+    public void removeKey() {
         file.delete();
     }
 
