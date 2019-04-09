@@ -16,7 +16,7 @@ public class PersistAccessToken implements Persistable, Serializable {
     String secretToken;
 
 
-    public static final File file = new File("token.txt");
+    public static final File file = new File("token.dat");
     //public static final File file = new File(System.getProperty("user.home")+"/consumer.txt".replace("\\","/"));
 
     public PersistAccessToken() {
