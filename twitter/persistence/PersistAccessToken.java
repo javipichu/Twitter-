@@ -16,7 +16,8 @@ public class PersistAccessToken implements Persistable, Serializable {
     String secretToken;
 
 
-    public static final File file = new File("twitter/persistence/token.txt");
+    public static final File file = new File("token.txt");
+    //public static final File file = new File(System.getProperty("user.home")+"/consumer.txt".replace("\\","/"));
 
     public PersistAccessToken() {
     }
@@ -94,7 +95,7 @@ public class PersistAccessToken implements Persistable, Serializable {
             //Abro el navegador. Firefox, en este caso.
             Runtime runtime = Runtime.getRuntime();
             try {
-                runtime.exec("firefox " + url);
+                runtime.exec("chrome " + url);
             } catch (Exception e) {
                 System.out.println("Cant find firefox. Copy console link;");
             }

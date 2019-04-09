@@ -43,7 +43,7 @@ public class Session {
             } catch (IOException | TwitterException ex) {
                 ex.printStackTrace();
             }
-            token.setDefault();
+            //token.setDefault();
             //e.printStackTrace();
         }
 

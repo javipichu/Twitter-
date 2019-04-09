@@ -9,7 +9,9 @@ public class PersistConsumerKey implements Persistable, Serializable {
     String apisecret;
 
 
-    File file = new File("twitter/persistence/consumer.txt");
+    File file = new File("consumer.txt");    
+    //File file = new File(System.getProperty("user.home")+"/consumer.txt".replace("\\","/"));
+    
 
     public PersistConsumerKey() {
     }
@@ -44,6 +46,7 @@ public class PersistConsumerKey implements Persistable, Serializable {
         try (PrintWriter pw = new PrintWriter(file)) {
             pw.println(apikey);
             pw.println(apisecret);
+            System.out.println(file.getAbsolutePath());
         } catch (IOException e) {
             System.out.println("IOException on saving consumers ***");
             e.printStackTrace();
@@ -55,6 +58,7 @@ public class PersistConsumerKey implements Persistable, Serializable {
         this.apikey = scan.nextLine();
         this.apisecret = scan.nextLine();
         System.out.println("Read consumer OK");
+            System.out.println(file.getAbsolutePath());
     }
 
     @Override
