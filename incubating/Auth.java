@@ -1,4 +1,4 @@
-package twitter.incubating;
+package incubating;
 
 import java.io.*;
 

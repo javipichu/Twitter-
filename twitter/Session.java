@@ -14,20 +14,20 @@ public class Session {
     PersistAccessToken token;
 
 
-    public Session() {
+    public Session() throws TwitterException{
         this(false);
     }
 
-    public Session(boolean persist) {
+    public Session(boolean persist) throws TwitterException{
         consumer = new PersistConsumerKey();
         try {
             consumer.readKey();
-            System.out.println("Consumer read from file.");
+            //System.out.println("Consumer read from file.");
         } catch (IOException e) {
-            System.out.println("Consumer file not found");
+            //System.out.println("Consumer file not found");
             consumer.setDefault();
-            consumer.saveKey();
-            System.out.println("Defaults consumer set and saved!");
+            //consumer.saveKey();
+            System.out.println("Defaults consumer set!");
         }
 
         token = new PersistAccessToken();

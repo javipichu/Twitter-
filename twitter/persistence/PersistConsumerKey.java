@@ -5,11 +5,11 @@ import java.util.Scanner;
 
 public class PersistConsumerKey implements Persistable, Serializable {
 
-    String apikey;
-    String apisecret;
+    private String apikey;
+    private String apisecret;
 
 
-    File file = new File("consumer.dat");
+    private File file = new File("consumer.dat");
     //File file = new File(System.getProperty("user.home")+"/consumer.txt".replace("\\","/"));
 
 
@@ -58,7 +58,7 @@ public class PersistConsumerKey implements Persistable, Serializable {
         this.apikey = scan.nextLine();
         this.apisecret = scan.nextLine();
         System.out.println("Read consumer OK");
-        System.out.println(file.getAbsolutePath());
+        //System.out.println(file.getAbsolutePath());
     }
 
     @Override
