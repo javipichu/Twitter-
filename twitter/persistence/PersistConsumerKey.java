@@ -5,11 +5,9 @@ import java.util.Scanner;
 
 public class PersistConsumerKey implements Persistable, Serializable {
 
+    private final File file = new File("consumer.dat");
     private String apikey;
     private String apisecret;
-
-
-    private final File file = new File("consumer.dat");
     //File file = new File(System.getProperty("user.home")+"/consumer.txt".replace("\\","/"));
 
 

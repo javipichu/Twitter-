@@ -23,7 +23,7 @@ public class Main {
                         StringBuilder tweetsb = new StringBuilder();
                         for (int i = 1; i < args.length; i++) {
                             tweetsb.append(args[i]);
-                            if(i!=args.length-1)
+                            if (i != args.length - 1)
                                 tweetsb.append(" ");
                         }
                         String tweet = tweetsb.toString();
@@ -109,8 +109,8 @@ public class Main {
             }
         }
         if (!persist) {
-            try{
-            session = new Session();
+            try {
+                session = new Session();
             } catch (TwitterException e) {
                 System.out.println("Error Authenticating. Bye");
                 //e.printStackTrace();

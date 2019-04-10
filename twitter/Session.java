@@ -14,11 +14,11 @@ class Session {
     private final PersistAccessToken token;
 
 
-    public Session() throws TwitterException{
+    public Session() throws TwitterException {
         this(false);
     }
 
-    public Session(boolean persist) throws TwitterException{
+    public Session(boolean persist) throws TwitterException {
         consumer = new PersistConsumerKey();
         try {
             consumer.readKey();

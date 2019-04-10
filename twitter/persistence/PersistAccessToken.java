@@ -67,7 +67,7 @@ public class PersistAccessToken implements Persistable, Serializable {
     }
 
     public void removeKey() {
-        if(scan != null)
+        if (scan != null)
             scan.close();
         file.delete();
         //System.out.println("Token Killed");
