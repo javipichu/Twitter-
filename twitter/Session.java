@@ -40,10 +40,10 @@ class Session {
             System.out.println("Token file not found -> OAuth");
             try {
                 token.createAccessToken(consumer);
-            } catch (IOException | TwitterException ex) {
+            } catch (IOException ex) {
                 ex.printStackTrace();
             }
-            //token.setDefault();
+            //token.setDefault();TwitterException ex
             //e.printStackTrace();
         }
 
@@ -55,13 +55,7 @@ class Session {
                 .setOAuthAccessTokenSecret(token.getSecretToken());
         twitter = new TwitterFactory(configBuilder.build()).getInstance();
 
-
-        try {
-            System.out.println("Welcome @" + twitter.showUser(twitter.getScreenName()).getScreenName());
-
-        } catch (TwitterException e) {
-            e.printStackTrace();
-        }
+        System.out.println("Welcome @" + twitter.showUser(twitter.getScreenName()).getScreenName());
     }
 
     public Twitter getTwitter() {

@@ -12,34 +12,37 @@ public class Main {
         if (args.length == 0) {
             session = getSession();
             menu(session);
-        } else if (PersistAccessToken.file.exists()) {
-            try {
-                session = new Session();
-                switch (args[1]) {
-                    case "timeline":
-                        session.printTimeline();
-                        System.exit(3);
-                    case "tweet":
-                        StringBuilder tweetsb = new StringBuilder();
-                        for (int i = 1; i < args.length; i++) {
-                            tweetsb.append(args[i]);
-                            if (i != args.length - 1)
-                                tweetsb.append(" ");
-                        }
-                        String tweet = tweetsb.toString();
-                        tweet = tweet.substring(0, Math.min(139, tweet.length()));
-                        session.updateStatus(tweet);
-                        System.exit(4);
-                    case "clear":
-                        session.clearSession();
-                        System.exit(5);
-                    case "help":
-                        System.out.println("Manual ToDo");
-                        System.exit(6);
+        } else {
+            if (PersistAccessToken.file.exists()) {
+                try {
+                    session = new Session(true);
+                    switch (args[0]) {
+                        case "timeline":
+                            session.printTimeline();
+                            System.exit(3);
+                        case "tweet":
+                            StringBuilder tweetsb = new StringBuilder();
+                            for (int i = 1; i < args.length; i++) {
+                                tweetsb.append(args[i]);
+                                if (i != args.length - 1)
+                                    tweetsb.append(" ");
+                            }
+                            String tweet = tweetsb.toString();
+                            tweet = tweet.substring(0, Math.min(139, tweet.length()));
+                            session.updateStatus(tweet);
+                            System.exit(4);
+                        case "clear":
+                            session.clearSession();
+                            System.exit(5);
+                        case "help":
+                        default:
+                            System.out.println("jtwit timeline\njtwit tweet <status message>\njtwit clear\njtwit help");
+                            System.exit(6);
+                    }
+                } catch (TwitterException e) {
+                    System.out.println("You need an authenticated session to use this command.\nTo authenticate use only : jtwit");
                 }
-            } catch (TwitterException e) {
-                System.out.println("You need an authenticated session to use this command.\nTo authenticate use only : jtwit");
-            }
+            }else   System.out.println("You need an authenticated session to use this command.\nTo authenticate use only : jtwit");
         }
     }
 
@@ -105,6 +108,7 @@ public class Main {
                     session = new Session(true);
                 } catch (TwitterException e) {
                     System.out.println("Error Authenticating. Try : jtwit clean");
+                    System.exit(1);
                 }
             }
         }
@@ -113,6 +117,7 @@ public class Main {
                 session = new Session();
             } catch (TwitterException e) {
                 System.out.println("Error Authenticating. Bye");
+                System.exit(1);
                 //e.printStackTrace();
             }
         }
