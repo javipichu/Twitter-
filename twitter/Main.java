@@ -42,7 +42,8 @@ public class Main {
                 } catch (TwitterException e) {
                     System.out.println("You need an authenticated session to use this command.\nTo authenticate use only : jtwit");
                 }
-            }else   System.out.println("You need an authenticated session to use this command.\nTo authenticate use only : jtwit");
+            } else
+                System.out.println("You need an authenticated session to use this command.\nTo authenticate use only : jtwit");
         }
     }
 
