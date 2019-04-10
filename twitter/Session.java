@@ -7,11 +7,11 @@ import twitter4j.conf.ConfigurationBuilder;
 
 import java.io.IOException;
 
-public class Session {
+class Session {
 
-    Twitter twitter;
-    PersistConsumerKey consumer;
-    PersistAccessToken token;
+    private final Twitter twitter;
+    private final PersistConsumerKey consumer;
+    private final PersistAccessToken token;
 
 
     public Session() throws TwitterException{
@@ -77,8 +77,9 @@ public class Session {
         } catch (TwitterException e) {
             e.printStackTrace();
         }
-        for (int i = 0; i < listado.size(); i++) {
-            System.out.printf("%30s | %15s | %100s %n", listado.get(i).getCreatedAt().toString(), ("@" + listado.get(i).getUser().getScreenName()), listado.get(i).getText());
+        assert listado != null;
+        for (Status status : listado) {
+            System.out.printf("%30s | %15s | %100s %n", status.getCreatedAt().toString(), ("@" + status.getUser().getScreenName()), status.getText());
         }
     }
 

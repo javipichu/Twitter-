@@ -13,11 +13,11 @@ import java.util.Scanner;
 public class PersistAccessToken implements Persistable, Serializable {
 
     public static final File file = new File("token.dat");
-    String token;
-    String secretToken;
+    private String token;
+    private String secretToken;
     //public static final File file = new File(System.getProperty("user.home")+"/consumer.txt".replace("\\","/"));
 
-    Scanner scan;
+    private Scanner scan;
 
     public PersistAccessToken() {
     }

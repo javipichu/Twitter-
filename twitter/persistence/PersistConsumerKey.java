@@ -9,7 +9,7 @@ public class PersistConsumerKey implements Persistable, Serializable {
     private String apisecret;
 
 
-    private File file = new File("consumer.dat");
+    private final File file = new File("consumer.dat");
     //File file = new File(System.getProperty("user.home")+"/consumer.txt".replace("\\","/"));
 
 

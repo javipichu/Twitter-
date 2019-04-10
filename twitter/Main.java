@@ -120,7 +120,7 @@ public class Main {
     }
 
 
-    public static boolean isInteger(String str) {
+    private static boolean isInteger(String str) {
         try {
             Integer.parseInt(str);
             return true;
@@ -129,7 +129,7 @@ public class Main {
         }
     }
 
-    public static Boolean consoleAssert() {
+    private static Boolean consoleAssert() {
         switch ((int) scanChar()) {
             case 121: // 'y'
             case 89:  // 'Y'
@@ -141,7 +141,7 @@ public class Main {
         return null;
     }
 
-    public static char scanChar() {
+    private static char scanChar() {
         return new Scanner(System.in).next().charAt(0);
     }
 }

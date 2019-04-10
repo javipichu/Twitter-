@@ -3,13 +3,13 @@ package twitter.persistence;
 import java.io.File;
 import java.io.IOException;
 
-public interface Persistable {
+interface Persistable {
 
     File file = null;
 
     void setDefault();
 
-    void saveKey() throws IOException;
+    void saveKey();
 
     void readKey() throws IOException;
 }
