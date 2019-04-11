@@ -117,9 +117,9 @@ public class Main {
             try {
                 session = new Session();
             } catch (TwitterException e) {
-                System.out.println("Error Authenticating. Bye");
+                System.out.println("Error de autentificación. Bye");
                 System.exit(1);
-                //e.printStackTrace();
+               
             }
         }
         return session;

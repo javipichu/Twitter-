@@ -1,4 +1,4 @@
-package incubating;
+package Twitter;
 
 import java.io.*;
 
@@ -11,7 +11,7 @@ import twitter4j.auth.RequestToken;
 import twitter4j.conf.ConfigurationBuilder;
 
 /**
- * @author fsancheztemprano
+ * @author jalvarezotero
  */
 public class Auth {
 

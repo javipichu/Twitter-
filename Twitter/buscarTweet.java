@@ -1,4 +1,4 @@
-package incubating;
+package Twitter;
 
 import java.util.List;
 import twitter4j.Query;
@@ -9,9 +9,9 @@ import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 
 /**
- * @author fsancheztemprano
+ * @author jalvarezotero
  */
-public class SearchTweet {
+public class buscarTweet {
     public static void main(String[] args) {
         args = new String[]{"source:twitter4j fjst_dc"};
         if (args.length < 1) {
@@ -32,7 +32,7 @@ public class SearchTweet {
             System.exit(0);
         } catch (TwitterException te) {
             te.printStackTrace();
-            System.out.println("Failed to search tweets: " + te.getMessage());
+            System.out.println("Error al buscar tweets: " + te.getMessage());
             System.exit(-1);
         }
     }

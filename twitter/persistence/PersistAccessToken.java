@@ -15,8 +15,7 @@ public class PersistAccessToken implements Persistable, Serializable {
     public static final File file = new File("token.dat");
     private String token;
     private String secretToken;
-    //public static final File file = new File(System.getProperty("user.home")+"/consumer.txt".replace("\\","/"));
-
+   
     private Scanner scan;
 
     public PersistAccessToken() {
@@ -56,7 +55,7 @@ public class PersistAccessToken implements Persistable, Serializable {
             System.out.println("IOException on saving tokens ***");
             e.printStackTrace();
         }
-        System.out.println("Token saved.");
+        System.out.println("Token guardado.");
     }
 
     public void readKey() throws FileNotFoundException {
@@ -70,7 +69,7 @@ public class PersistAccessToken implements Persistable, Serializable {
         if (scan != null)
             scan.close();
         file.delete();
-        //System.out.println("Token Killed");
+      
     }
 
 
@@ -86,17 +85,15 @@ public class PersistAccessToken implements Persistable, Serializable {
         do {
             try {
                 requestToken = OAuthTwitter.getOAuthRequestToken();
-                //System.out.println("Request Tokens obtenidos con éxito.");
-                //System.out.println("Request Token: " + requestToken.getToken());
-                //System.out.println("Request Token secret: " + requestToken.getTokenSecret());
+                
                 url = requestToken.getAuthorizationURL();
                 System.out.println("URL:");
                 System.out.println(requestToken.getAuthorizationURL());
             } catch (TwitterException ex) {
-                //Logger.getLogger(JTwit.class.getName()).log(Level.SEVERE, null, ex);
+               
             }
             BufferedReader lectorTeclado = new BufferedReader(new InputStreamReader(System.in));
-            //Abro el navegador. Firefox, en este caso.
+           
             Runtime runtime = Runtime.getRuntime();
             try {
                 runtime.exec("firefox " + url);
@@ -105,7 +102,7 @@ public class PersistAccessToken implements Persistable, Serializable {
             }
             //Nos avisa de que introduciremos el PIN a continuación
             System.out.print("\n\nOAuth PIN: ");
-            //Leemos el PIN
+          
             String pin = lectorTeclado.readLine();
             if (pin.length() > 0) {
                 accessToken = OAuthTwitter.getOAuthAccessToken(requestToken, pin);
@@ -116,7 +113,6 @@ public class PersistAccessToken implements Persistable, Serializable {
         System.out.println("\n\nAccess Tokens OK\n Access Granted!\n");
         token = accessToken.getToken();
         secretToken = accessToken.getTokenSecret();
-        //System.out.println("Access Token: " + accessToken.getToken());
-        //System.out.println("Access Token secret: " + accessToken.getTokenSecret());
+     
     }
 }

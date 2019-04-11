@@ -1,4 +1,5 @@
-package incubating;
+package Twitter;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -21,7 +22,7 @@ public class JTwit {
     JTwit() throws TwitterException {
         Twitter twitter;
         ConfigurationBuilder configBuilder = new ConfigurationBuilder();
-        String token = ""; //Los almaceno en un string, ya que pueden variar según la cuenta
+        String token = ""; //Se almacena en un string, ya que pueden variar 
         String tokenSecret = "";
         File archivo = null;
         FileReader fileR = null;

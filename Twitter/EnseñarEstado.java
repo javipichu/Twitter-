@@ -1,4 +1,4 @@
-package incubating;
+package Twitter;
 
 import twitter4j.Status;
 import twitter4j.Twitter;
@@ -6,9 +6,9 @@ import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 
 /**
- * @author fsancheztemprano
+ * @author jalvarezotero
  */
-public class ShowStatus {
+public class EnseñarEstado {
     public static void main(String[] args) {
         args = new String[]{"1110461307801817088"};
         if (args.length < 1) {
@@ -22,7 +22,7 @@ public class ShowStatus {
             System.exit(0);
         } catch (TwitterException te) {
             te.printStackTrace();
-            System.out.println("Failed to show status: " + te.getMessage());
+            System.out.println("Error al mostrar el estado: " + te.getMessage());
             System.exit(-1);
         }
     }

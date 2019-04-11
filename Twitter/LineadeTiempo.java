@@ -1,4 +1,4 @@
-package incubating;
+package Twitter;
 
 import java.util.List;
 import twitter4j.Status;
@@ -8,17 +8,13 @@ import twitter4j.TwitterFactory;
 import twitter4j.User;
 
 /**
- * @author fsancheztemprano
+ * @author jalvarezotero
  */
-public class TimeLine {
-    /**
-     * Usage: java twitter4j.examples.timeline.GetHomeTimeline
-     *
-     * @param args String[]
-     */
+public class LineadeTiempo {
+    
     public static void main(String[] args) {
         try {
-            // gets Twitter instance with default credentials
+           
             Twitter twitter = new TwitterFactory().getInstance();
             User user = twitter.verifyCredentials();
             List<Status> statuses = twitter.getHomeTimeline();

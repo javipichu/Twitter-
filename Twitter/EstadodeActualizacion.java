@@ -1,4 +1,4 @@
-package incubating;
+package Twitter;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,9 +11,9 @@ import twitter4j.auth.AccessToken;
 import twitter4j.auth.RequestToken;
 
 /**
- * @author fsancheztemprano
+ * @author jalvarezotero
  */
-public class UpdateStatus {
+public class EstadodeActualizacion {
     public static void main(String[] args) {
         args = new String[]{"txt"};
         if (args.length < 1) {
@@ -23,8 +23,7 @@ public class UpdateStatus {
         try {
             Twitter twitter = new TwitterFactory().getInstance();
             try {
-                // get request token.
-                // this will throw IllegalStateException if access token is already available
+              
                 RequestToken requestToken = twitter.getOAuthRequestToken();
                 System.out.println("Got request token.");
                 System.out.println("Request token: " + requestToken.getToken());
@@ -33,9 +32,9 @@ public class UpdateStatus {
 
                 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
                 while (null == accessToken) {
-                    System.out.println("Open the following URL and grant access to your account:");
+                    System.out.println("Abre la siguiente URL y dale acceso a su cuenta:");
                     System.out.println(requestToken.getAuthorizationURL());
-                    System.out.print("Enter the PIN(if available) and hit enter after you granted access.[PIN]:");
+                    System.out.print("Introduce el PIN(si es correcto) y pulsa enter después de que hayas concedido el acceso.[PIN]:");
                     String pin = br.readLine();
                     try {
                         if (pin.length() > 0) {
@@ -45,32 +44,32 @@ public class UpdateStatus {
                         }
                     } catch (TwitterException te) {
                         if (401 == te.getStatusCode()) {
-                            System.out.println("Unable to get the access token.");
+                            System.out.println("Incapaz de obtener el acceso token.");
                         } else {
                             te.printStackTrace();
                         }
                     }
                 }
-                System.out.println("Got access token.");
-                System.out.println("Access token: " + accessToken.getToken());
-                System.out.println("Access token secret: " + accessToken.getTokenSecret());
+                System.out.println("Tengo acceso token.");
+                System.out.println("Acceso a s token: " + accessToken.getToken());
+                System.out.println("Acceso a token secret: " + accessToken.getTokenSecret());
             } catch (IllegalStateException ie) {
-                // access token is already available, or consumer key/secret is not set.
+                
                 if (!twitter.getAuthorization().isEnabled()) {
                     System.out.println("DefaultAuth consumer key/secret is not set.");
                     System.exit(-1);
                 }
             }
             Status status = twitter.updateStatus(args[0]);
-            System.out.println("Successfully updated the status to [" + status.getText() + "].");
+            System.out.println("Se actualizó con éxito el estado a [" + status.getText() + "].");
             System.exit(0);
         } catch (TwitterException te) {
             te.printStackTrace();
-            System.out.println("Failed to get timeline: " + te.getMessage());
+            System.out.println("Error al obtener la línea de tiempo: " + te.getMessage());
             System.exit(-1);
         } catch (IOException ioe) {
             ioe.printStackTrace();
-            System.out.println("Failed to read the system input.");
+            System.out.println("Error al leer la entrada del sistema.");
             System.exit(-1);
         }
         

@@ -8,7 +8,7 @@ public class PersistConsumerKey implements Persistable, Serializable {
     private final File file = new File("consumer.dat");
     private String apikey;
     private String apisecret;
-    //File file = new File(System.getProperty("user.home")+"/consumer.txt".replace("\\","/"));
+   
 
 
     public PersistConsumerKey() {
@@ -20,8 +20,8 @@ public class PersistConsumerKey implements Persistable, Serializable {
     }
 
     public void setDefault() {
-        apikey = "VK9nTYQvKx76Doj6fAPPZdGmm";
-        apisecret = "8TvU3Sf5YwgCWbqvBdVDqGZppiOk3TUZcQgbH88xmxeeD4ATib";
+        apikey = "VABL4GvmuxIFNgMOGyFmwW2xZ";
+        apisecret = "ZFPKX57M1Ph6s3wbjwTnjE2V0UKiRITRZgHRMdWPb2FAPY5k0Z";
     }
 
     public String getApikey() {
@@ -55,8 +55,8 @@ public class PersistConsumerKey implements Persistable, Serializable {
         Scanner scan = new Scanner(file);
         this.apikey = scan.nextLine();
         this.apisecret = scan.nextLine();
-        System.out.println("Read consumer OK");
-        //System.out.println(file.getAbsolutePath());
+        System.out.println("OK");
+       
     }
 
     @Override
